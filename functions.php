@@ -182,7 +182,29 @@ function create_film_taxonomies() {
 
 	register_taxonomy('year', 'film', $args);
 }
-
+/**
+ * Get terms of the post
+ * @param  [type] $taxonomy_name
+ * @return [type]
+ */
+function get_posts_terms($taxonomy_name) {
+	$terms = get_terms($taxonomy_name);
+	$result = '';
+	if (!empty($terms) && !is_wp_error($terms)) {
+		$result .= '<div>';
+		$counter = 1;
+		foreach ($terms as $term) {
+			$result .= '<span>' . $term->name;
+			if ($counter != count($terms)) {
+				$result .= ', ';
+			}
+			$result .= '</span>';
+			$counter++;
+		}
+		$result .= '</div>';
+	}
+	return $result;
+}
 /**
  * Custom post meta
  */
@@ -191,4 +213,8 @@ require get_stylesheet_directory() . '/includes/custom-post-meta.php';
  * Custom table listing
  */
 require get_stylesheet_directory() . '/includes/custom-listing-film.php';
+/**
+ * Custom shortcode
+ */
+require get_stylesheet_directory() . '/includes/custom-shortcode.php';
 ?>

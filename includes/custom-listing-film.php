@@ -24,7 +24,7 @@ function manage_film_table_head($defaults) {
 function manage_film_table_content($column_name, $post_id) {
 	if ($column_name == 'release_date') {
 		$event_date = get_post_meta($post_id, 'release_date', true);
-		echo date(_x('F d, Y', 'Event date format', 'textdomain'), strtotime($event_date));
+		echo date(_x('F d, Y', 'Event date format', 'unite-child'), strtotime($event_date));
 	}
 	if ($column_name == 'ticket_price') {
 		$status = get_post_meta($post_id, 'ticket_price', true);

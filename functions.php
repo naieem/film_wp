@@ -184,7 +184,11 @@ function create_film_taxonomies() {
 }
 
 /**
- * Custom psot meta
+ * Custom post meta
  */
 require get_stylesheet_directory() . '/includes/custom-post-meta.php';
+/**
+ * Custom table listing
+ */
+require get_stylesheet_directory() . '/includes/custom-listing-film.php';
 ?>

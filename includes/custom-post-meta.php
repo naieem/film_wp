@@ -7,6 +7,14 @@
  * Time: 4:00 PM
  */
 
+// registering meta boxes
+add_action('add_meta_boxes', 'add_embed_meta_box');
+// saving meta boxes data
+add_action('save_post', 'save_embed_meta');
+
+/**
+ * Registering meta boxes
+ */
 function add_embed_meta_box() {
 	$types = array('film');
 	foreach ($types as $postType) {
@@ -20,11 +28,11 @@ function add_embed_meta_box() {
 	}
 }
 
-add_action('add_meta_boxes', 'add_embed_meta_box');
-
-/**************************************************************************
+/**
  * Save the meta fields on save of the post
- **************************************************************************/
+ * @param  [type] $post_id
+ * @return [type]
+ */
 function save_embed_meta($post_id) {
 	// verify nonce
 	if (!wp_verify_nonce($_POST['custom_meta_box_nonce'], basename(__FILE__))) {
@@ -51,10 +59,9 @@ function save_embed_meta($post_id) {
 	update_post_meta($post_id, "release_date", $release_date);
 }
 
-add_action('save_post', 'save_embed_meta');
-
 /**
- * Showing meta box in the post page
+ * showing meta boxes view in the film admin page
+ * @return [type]
  */
 function show_embed_meta_box() {
 	global $post;

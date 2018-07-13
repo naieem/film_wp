@@ -184,6 +184,7 @@ function create_film_taxonomies() {
 }
 /**
  * Get terms of the post
+ * @param  [type] $postId
  * @param  [type] $taxonomy_name
  * @return [type]
  */

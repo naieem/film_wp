@@ -187,8 +187,8 @@ function create_film_taxonomies() {
  * @param  [type] $taxonomy_name
  * @return [type]
  */
-function get_posts_terms($taxonomy_name) {
-	$terms = get_terms($taxonomy_name);
+function get_posts_terms($postId, $taxonomy_name) {
+	$terms = wp_get_post_terms($postId, $taxonomy_name, array("fields" => "all"));
 	$result = '';
 	if (!empty($terms) && !is_wp_error($terms)) {
 		$result .= '<div>';
@@ -202,6 +202,8 @@ function get_posts_terms($taxonomy_name) {
 			$counter++;
 		}
 		$result .= '</div>';
+	} else {
+		$result .= 'No item found';
 	}
 	return $result;
 }

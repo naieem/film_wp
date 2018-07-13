@@ -2,6 +2,12 @@
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 add_action('init', 'film_post_type_init');
 add_action('init', 'create_film_taxonomies', 0);
+// ===============================================
+// for datepicker
+// ===============================================
+wp_enqueue_script('jquery-ui-datepicker');
+wp_enqueue_style('jquery-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
+
 function theme_enqueue_styles() {
 
 	$parent_style = 'unite-parent-style';
@@ -177,4 +183,8 @@ function create_film_taxonomies() {
 	register_taxonomy('year', 'film', $args);
 }
 
+/**
+ * Custom psot meta
+ */
+require get_stylesheet_directory() . '/includes/custom-post-meta.php';
 ?>
